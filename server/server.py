@@ -1,7 +1,10 @@
 from flask import Flask
 from flask_cors import CORS, cross_origin
 from controllers.analysis_controller import analysis_controller
+from controllers.history_controller import history_controller
 import logging
+
+
 
 app = Flask(__name__)
 CORS(app)
@@ -12,7 +15,7 @@ logging.basicConfig(
 )
 
 app.register_blueprint(analysis_controller, url_prefix="/api")
-
+app.register_blueprint(history_controller, url_prefix="/api")
 
 if __name__ == '__main__':
    

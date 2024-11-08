@@ -18,7 +18,6 @@ export const Navbar = () =>{
         <div>
             <Button onClick={toggleColorMode} variant={"ghost"} colorPalette={"gray"} >
                 {colorMode === "light" ? <RiMoonFill/> : <RiSunFill color={"orange"}/>}
-                {colorMode === "light" ? "Dark" : "Light"}
             </Button>
         </div>
 
