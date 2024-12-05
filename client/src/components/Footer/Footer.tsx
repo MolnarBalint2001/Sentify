@@ -7,7 +7,7 @@ export const Footer = () => {
 
     return <Flex position={"absolute"} bottom={0} justifyContent={"start"} alignItems={"center"} gap={2} width={"100%"}
                  p={4}>
-
+        
         <Flex alignItems={"center"} gap={2} width={400}>
             <Text fontWeight={"semibold"}>Sentify</Text>
             &middot;
