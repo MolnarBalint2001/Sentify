@@ -81,7 +81,7 @@ class AnalysisResult:
         self._neu_count = 0
         self._p_count = 0
         self._pp_count = 0
-        self.classified_results = []
+        self.text_results = []
 
 
     @property
@@ -145,13 +145,13 @@ class AnalysisResult:
         self._pp_count = value
 
     @property
-    def classified_results(self) -> List["TextResult"]:
-        return self._classified_results
+    def text_results(self) -> List["TextResult"]:
+        return self._text_results
 
-    @classified_results.setter
-    def text_results(self, value: List["ClassificationResult"]) -> None:
+    @text_results.setter
+    def text_results(self, value: List["TextResult"]) -> None:
         if not isinstance(value, list):
-            raise TypeError("classified_results must be a list of ClassificationResult objects.")
+            raise TypeError("text_results must be a list of TextResult objects.")
         self._text_results = value
 
     def to_dict(self) -> dict:
@@ -162,7 +162,7 @@ class AnalysisResult:
             "neu_count": self.neu_count,
             "p_count": self.p_count,
             "pp_count": self.pp_count,
-            "classified_results": [result.to_dict() for result in self.text_results]
+            "text_results": [result.to_dict() for result in self.text_results]
         }
 
     def __str__(self) -> str:
@@ -170,7 +170,7 @@ class AnalysisResult:
             f"AnalysisResult(execution_time={self.execution_time} ms, "
             f"nn_count={self.nn_count}, n_count={self.n_count}, neu_count={self.neu_count}, "
             f"p_count={self.p_count}, pp_count={self.pp_count}, "
-            f"classified_results=[{', '.join(str(result) for result in self.classified_results)}])"
+            f"text_results=[{', '.join(str(result) for result in self.text_results)}])"
         )
     
 
