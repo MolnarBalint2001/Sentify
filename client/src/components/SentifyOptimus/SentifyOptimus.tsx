@@ -1,8 +1,10 @@
+
+
 import {Badge, createListCollection, Flex, Input, Separator, Text} from "@chakra-ui/react";
 import {Field} from "@/components/ui/field.tsx";
 import {RiArrowLeftLine, RiSettings3Fill} from "react-icons/ri"
-import {useAnalyze} from "@/components/Analyzer/hooks/useAnalyze.ts";
-import {Button} from "@/components/ui/button"
+import {useAnalyze} from "@/components/SentifyOptimus/hooks/useAnalyze.ts";
+import {Button} from "@/components/ui/button.tsx"
 import {HiEmojiHappy, HiEmojiSad, HiOutlineEmojiHappy, HiOutlineEmojiSad, HiStar} from "react-icons/hi"
 import {
     SelectContent,
@@ -11,12 +13,13 @@ import {
     SelectRoot,
     SelectTrigger,
     SelectValueText,
-} from "@/components/ui/select"
+} from "@/components/ui/select.tsx"
 
 import YouTubeLogo from "../../assets/youtube.png";
 import RedditLogo from "../../assets/reddit.png";
-import "./Analyzer.css";
-import {ResultItem} from "@/components/Analyzer/components/ResultItem.tsx";
+import "./SentifyOptimus.css";
+import {ResultItem} from "@/components/SentifyOptimus/components/ResultItem.tsx";
+
 
 const pageOptions: { label: string, value: string }[] = [
     {
@@ -35,7 +38,7 @@ const items = createListCollection({
     items: pageOptions
 })
 
-export const Analyzer = () => {
+export const SentifyOptimus = () => {
 
 
     const {
@@ -45,17 +48,19 @@ export const Analyzer = () => {
         invalid,
         result,
         formVisible,
-        setFormVisible
+        setFormVisible,
+        activeModel
     } = useAnalyze();
+
 
     return <Flex direction={"column"} alignItems={"center"}>
 
 
         <Flex direction={"column"} alignItems={"center"} id={"greet"} className={`${formVisible ? "hide" : ""}`}>
-            <Text fontSize={48} fontWeight={"semibold"} zIndex={10}>Sentify</Text>
+            <Text fontSize={48} fontWeight={"semibold"} color={"teal.400"} zIndex={10}>Sentify-Optimus</Text>
             <Text>Discover the mood behind the message.</Text>
             <Button mt={10} onClick={() => setFormVisible(true)}>
-                Try Sentify
+                Try Sentify-Optimus
             </Button>
         </Flex>
 
@@ -66,24 +71,6 @@ export const Analyzer = () => {
             <Button variant={"ghost"} alignSelf={"start"} onClick={()=>setFormVisible(false)}>
                 <RiArrowLeftLine/>
             </Button>
-            <Field helperText={"Which page's comment would like to see?"}>
-                <SelectRoot size={"md"} collection={items}>
-                    <SelectLabel>Page</SelectLabel>
-                    <SelectTrigger>
-                        <SelectValueText placeholder="Select page"/>
-                    </SelectTrigger>
-                    <SelectContent>
-                        {pageOptions.map((page) => (
-                            <SelectItem item={page} key={page.label}>
-                                <Flex gap={2} alignItems={"center"}>
-                                    <img src={page.value}/>
-                                    <Text>{page.label}</Text>
-                                </Flex>
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </SelectRoot>
-            </Field>
 
             <Field label={"URL"} helperText="Enter You Tube url to get comment sentiments!"
                    invalid={invalid} errorText={"URL field is required"}>
