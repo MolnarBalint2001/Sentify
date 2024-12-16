@@ -1,0 +1,29 @@
+
+
+
+#optimus-greet.hide{
+    opacity: 0;
+    transform: translateY(20vh);
+    z-index: -1;
+}
+
+#optimus-greet{
+    opacity: 1;
+    transform: translateY(30vh);
+    transition: 0.5s ease-in-out;
+    z-index: 20;
+}
+
+
+
+#optimus-analyzer-form.hide{
+    transform: translateY(50px);
+    opacity: 0;
+}
+
+
+#optimus-analyzer-form{
+    transform: translateY(0);
+    opacity: 1;
+    transition: 0.5s ease-in-out;
+}
